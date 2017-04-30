@@ -1,0 +1,49 @@
+body{
+    padding-top: 70px;
+    background-color: #EBEBEB;
+    min-width: 370px;
+}
+/*editor && add*/
+textarea{
+    resize: none;
+}
+/* header */
+.nav-color{
+    background: #495A5B;
+    border:none;
+}
+.img-circle{
+    position: absolute;
+    top:1px;
+    left:26px;
+}
+/*导航栏右侧*/
+.profile .dropdown:hover{background-color:#0d747c}
+.profile.nav>.dropdown>a{
+    min-width:160px;
+    padding-left:82px;
+    color:#fff
+}
+
+/*list && user && detail*/
+.blog-back{
+    background-color: #fff;
+}
+
+/*index && detail*/
+.post-info span{
+    margin-right: 16px;
+}
+
+/* index */
+.article{
+    position: relative;
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.content{
+    overflow: hidden;/*内容超出后隐藏*/
+    text-overflow: ellipsis;/* 超出内容显示为省略号*/
+    white-space: nowrap;/*文本不进行换行*/
+}

@@ -1,0 +1,57 @@
+<% include common/header.html %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <form method="post" class="form-horizontal">
+                <div id="legend">
+                    <legend>注册</legend>
+                </div>
+                <div class="form-group">
+                    <label for="name" class="col-sm-2 control-label">用户名</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="name" placeholder="用户名" name="name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-sm-2 control-label">邮&nbsp;&nbsp;&nbsp;&nbsp;箱</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="email" placeholder="邮箱" name="email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-sm-2 control-label">密&nbsp;&nbsp;&nbsp;&nbsp;码</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="password" placeholder="密码" name="password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="confpw" class="col-sm-2 control-label">确认密码</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="confpw" placeholder="确认密码" name="confpw">
+                    </div>
+                </div>
+                <input type="submit" class="btn btn-primary col-md-offset-2" value="注册" onClick="dagu.regData(this);return false;">
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h5 class="modal-title">注册提示</h5>
+            </div>
+            <div class="modal-body">
+                <p id="content">null</p>
+            </div>
+            <div class="modal-footer">
+                <button id="confirm" onClick="dagu.gotoUrl(this)" type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include common/footer.html %>

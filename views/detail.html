@@ -1,0 +1,22 @@
+<% include common/header.html %>
+
+<div class="container">
+    <section class="row">
+        <div class="col-md-8  blog-back">
+            <article class="gu-article">
+                <h1><%=view.title%></h1>
+                <p class="post-info">
+                    <span><i class="glyphicon glyphicon-calendar"></i> <%=view.time%></span>
+                    <span><i class="glyphicon glyphicon-user"></i> <%=view.author.name%></span>
+                    <span><i class="glyphicon glyphicon-eye-open"></i> <%=view.pv%> </span>
+                </p>
+                <hr>
+                <div>
+                    <%-view.content%>
+                </div>
+                <hr>
+            </article>
+        </div>
+    </section>
+</div>
+<% include common/footer.html %>

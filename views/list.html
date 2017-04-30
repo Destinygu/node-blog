@@ -1,0 +1,29 @@
+<% include common/header.html %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered table-hover blog-back">
+                <tr>
+                    <td>文章id</td>
+                    <td>作者</td>
+                    <td>标题</td>
+                    <td>操作</td>
+                </tr>
+                <% list.forEach(function(list){ %>
+                <tr>
+                    <td><%=list._id%></td>
+                    <td><%=list.author.name%></td>
+                    <td><a href="/view/<%=list._id%>"><%=list.title%></a></td>
+                    <td>
+                        <a href="/list/<%=list._id%>/editor"><i class="glyphicon glyphicon-edit"></i>修改</a>
+                        <a id="del" href="/list/<%=list._id%>" onClick="return dagu.confirmAct();"><i class="glyphicon glyphicon-trash"></i>删除</a>
+                    </td>
+                </tr>
+                <% }); %>
+            </table>
+        </div>
+    </div>
+</div>
+
+<% include common/footer.html %>

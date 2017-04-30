@@ -1,0 +1,33 @@
+<% include common/header.html %>
+
+<section>
+    <div class="container">
+        <section class="row">
+            <% list.forEach(function(list){ %>
+            <section class="col-md-8">
+                <div class="article">
+                    <section class="post-article clearfix">
+                        <h4>
+                            <a href="/view/<%=list._id%>"><%=list.title%></a>
+                        </h4>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12 content">
+                                <%=list.content%>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="pull-right post-info">
+                            <span><i class="glyphicon glyphicon-calendar"></i> <%=list.time%></span>
+                            <span><i class="glyphicon glyphicon-user"></i> <%=list.author.name%></span>
+                            <span><i class="glyphicon glyphicon-eye-open"></i> <%=list.pv%></span>
+                        </div>
+                    </section>
+                </div>
+            </section>
+            <% }); %>
+        </section>
+    </div>
+</section>
+
+<% include common/footer.html %>

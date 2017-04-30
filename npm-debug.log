@@ -1,0 +1,50 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'E:\\Program Files (x86)\\nodejs\\node.exe',
+1 verbose cli   'C:\\Users\\大古神\\AppData\\Roaming\\npm\\node_modules\\cnpm\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   '--userconfig=C:\\Users\\大古神\\.cnpmrc',
+1 verbose cli   '--disturl=https://npm.taobao.org/mirrors/node',
+1 verbose cli   '--registry=https://registry.npm.taobao.org',
+1 verbose cli   'start' ]
+2 info using npm@3.10.10
+3 info using node@v7.7.4
+4 verbose run-script [ 'prestart', 'start', 'poststart' ]
+5 info lifecycle myblog@0.0.0~prestart: myblog@0.0.0
+6 silly lifecycle myblog@0.0.0~prestart: no script for prestart, continuing
+7 info lifecycle myblog@0.0.0~start: myblog@0.0.0
+8 verbose lifecycle myblog@0.0.0~start: unsafe-perm in lifecycle true
+9 verbose lifecycle myblog@0.0.0~start: PATH: C:\Users\大古神\AppData\Roaming\npm\node_modules\cnpm\node_modules\npm\bin\node-gyp-bin;E:\EdgeDownload\node-blog-master\node_modules\.bin;D:\Program Files (x86)\SPSSInc\Clementine12.0\bin\;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;E:\Program Files (x86)\Git\cmd;D:\Program Files (x86)\Tencent\WeChat;D:\Program Files (x86)\Tencent\QQ\Bin;E:\Program Files (x86)\Sublime Text 3;E:\Program Files (x86)\Git;E:\Program Files (x86)\nodejs\;F:\xampp\mysql\bin;D:\mongodb\bin;C:\Windows\System32\reg.exe；E:\Program Files (x86)\Java\jdk1.8.0_101\bin；E:\Program Files (x86)\Java\jdk1.8.0_101\jre\bin；C:\Users\大古神\AppData\Local\Microsoft\WindowsApps;C:\Users\大古神\AppData\Roaming\npm
+10 verbose lifecycle myblog@0.0.0~start: CWD: E:\EdgeDownload\node-blog-master
+11 silly lifecycle myblog@0.0.0~start: Args: [ '/d /s /c', 'node ./bin/www' ]
+12 silly lifecycle myblog@0.0.0~start: Returned: code: 3221225786  signal: null
+13 info lifecycle myblog@0.0.0~start: Failed to exec start script
+14 verbose stack Error: myblog@0.0.0 start: `node ./bin/www`
+14 verbose stack Exit status 3221225786
+14 verbose stack     at EventEmitter.<anonymous> (C:\Users\大古神\AppData\Roaming\npm\node_modules\cnpm\node_modules\npm\lib\utils\lifecycle.js:255:16)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at EventEmitter.emit (events.js:194:7)
+14 verbose stack     at ChildProcess.<anonymous> (C:\Users\大古神\AppData\Roaming\npm\node_modules\cnpm\node_modules\npm\lib\utils\spawn.js:40:14)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at ChildProcess.emit (events.js:194:7)
+14 verbose stack     at maybeClose (internal/child_process.js:899:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
+15 verbose pkgid myblog@0.0.0
+16 verbose cwd E:\EdgeDownload\node-blog-master
+17 error Windows_NT 10.0.14393
+18 error argv "E:\\Program Files (x86)\\nodejs\\node.exe" "C:\\Users\\大古神\\AppData\\Roaming\\npm\\node_modules\\cnpm\\node_modules\\npm\\bin\\npm-cli.js" "--userconfig=C:\\Users\\大古神\\.cnpmrc" "--disturl=https://npm.taobao.org/mirrors/node" "--registry=https://registry.npm.taobao.org" "start"
+19 error node v7.7.4
+20 error npm  v3.10.10
+21 error code ELIFECYCLE
+22 error myblog@0.0.0 start: `node ./bin/www`
+22 error Exit status 3221225786
+23 error Failed at the myblog@0.0.0 start script 'node ./bin/www'.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the myblog package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     node ./bin/www
+23 error You can get information on how to open an issue for this project with:
+23 error     npm bugs myblog
+23 error Or if that isn't available, you can get their info via:
+23 error     npm owner ls myblog
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/style/style.css">
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<header class="navbar navbar-inverse navbar-fixed-top nav-color" role="banner">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+                <img src="/images/logo.png" alt="二次元论坛欢迎你！">
+            </a>
+        </div>
+        <nav id="hb-nav" class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+            <ul class="nav navbar-nav">
+                <li><a href="/">首页</a></li>
+            <% if (user) { %>
+                <li><a href="/add">发表</a></li>
+                <li><a href="/list">列表</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right profile">
+
+                <li id="userInfo" class="dropdown" >
+                    <a href="/user/<%=user._id%>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <img class="img-circle"  src="/images/headimg.png">
+                        <%=user.name %>
+                        <b class="caret"></b>
+                    </a>
+                    <ul id="userMenu" class="dropdown-menu">
+                        <li><a href="/user/<%=user._id%>">个人信息
+                            <span class="glyphicon glyphicon-cog pull-right"></span></a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="/logout">安全退出
+                            <span class="glyphicon glyphicon-log-out pull-right"></span></a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+            <% } else { %>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/login"><i class="glyphicon glyphicon-log-in"></i> 登录 </a></li>
+                <li><a href="/reg"><i class="glyphicon glyphicon-pencil"></i> 注册</a></li>
+            </ul>
+            <% }%>
+
+        </nav>
+    </div>
+</header>
+
