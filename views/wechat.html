@@ -1,0 +1,55 @@
+<% include common/header.html %>
+<style>
+    .wrap{
+        width:800px;
+        height:500px;
+        margin: 0 auto;
+    }
+    .chat_content{
+        height:400px;
+        background: #fff;
+    }
+    .look{
+        height:30px;
+        background: #f0ad4e;
+    }
+    .chat_bot{
+        height: 70px;
+        background: #fff;
+    }
+</style>
+<div class="wrap">
+    <div class="chat_content">
+
+    </div>
+    <div class="look">
+
+    </div>
+    <div class="chat_bot">
+        <input class="chatBtn" type="button" value="按钮">
+    </div>
+</div>
+
+
+
+<script src="/js/socket.io.js"></script>
+
+<script>
+//    与服务器进行连接
+    var socket = io.connect();
+    $(".chatBtn").on('click',function () {
+//        接收服务端发送的hello事件 
+        socket.emit('thanks','谢谢')   
+    });
+    socket.on('hello',function(data){
+        alert(data);   
+    });
+    // 接受广播事件
+    socket.on('a',function(data){
+        alert(data);
+    });
+
+
+</script>
+
+<% include common/footer.html %>

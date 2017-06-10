@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/style/style.css">
     <script src="/js/jquery-3.1.1.min.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/js/all.js" type="text/javascript"></script>
 </head>
 <body>
 
@@ -31,17 +32,18 @@
             <% if (user) { %>
                 <li><a href="/add">发表</a></li>
                 <li><a href="/list">列表</a></li>
+                <li><a href="wechat">聊天室</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right profile">
 
                 <li id="userInfo" class="dropdown" >
-                    <a href="/user/<%=user._id%>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         <img class="img-circle"  src="/images/headimg.png">
                         <%=user.name %>
                         <b class="caret"></b>
                     </a>
                     <ul id="userMenu" class="dropdown-menu">
-                        <li><a href="/user/<%=user._id%>">个人信息
+                        <li><a href="/userup/<%=user._id%>">修改密码
                             <span class="glyphicon glyphicon-cog pull-right"></span></a>
                         </li>
                         <li class="divider"></li>

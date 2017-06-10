@@ -1,6 +1,7 @@
 var ModelUser = require('../model/user');
 var crypto = require('crypto');
 
+
 //登录
 module.exports.login = {
 
@@ -94,8 +95,8 @@ module.exports.reg = {
     }
 };
 
-//用户列表
-module.exports.userInfo = {
+//修改密码
+module.exports.updatepw = {
     get: function(req, res, next) {
         var _id = req.param('_id');
         var getData = {
@@ -104,15 +105,43 @@ module.exports.userInfo = {
         ModelUser.findById(getData, function(err, data) {
             if (err) console.log(err);
             if (data) {
-                res.render('user', {
+                res.render('userup', {
                     title: data.name,
                     view: data
                 });
-            } else {
-                res.send('查无此人');
             }
         });
-    }
+    },
+    post: function(req, res) {
+        var body = req.body;
+        
+        var resJson = {
+            status: false,
+            msg: '',
+            data: null
+        };
+        var md5 = crypto.createHash('md5');
+        var password_md5 = md5.update(req.body.password).digest('hex');
+        
+        ModelUser.update({
+            _id: body._id
+        }, {
+            $set: {
+                name: body.name,
+                password: password_md5
+            }
+        }, function(err) {
+        if (err) {
+            resJson.msg = '修改失败';
+            resJson.data = err;
+        } else {
+            resJson.msg = '修改成功';
+            resJson.status = true;
+        }
+        res.send(resJson);
+
+        });
+    }    
 };
 
 // 退出

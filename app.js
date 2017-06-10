@@ -12,6 +12,8 @@ var MongoStore = require('connect-mongo')(session);
 //加载路由文件
 var routes = require('./routes/routes');
 
+//载入数据库文件
+var db = require('./model/db');
 var app = express();
 
 // view engine setup
@@ -29,16 +31,6 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 // app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(express.static(path.join(__dirname, 'public')));
-
-//连接数据库
-mongoose.Promise = global.Promise;
-var db = mongoose.connect("mongodb://127.0.0.1:27017/blog");
-db.connection.on("error", function(error) {
-  console.log("数据库连接失败：" + error);
-});
-db.connection.on("open", function() {
-  console.log("------数据库连接成功！------");
-});
 
 
 //加载中间件,存储session

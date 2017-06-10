@@ -12,13 +12,13 @@ dagu.regData = function(_this) {
 
     if ($("#email").val().indexOf("@") == -1 || $("#email").val().indexOf(".") == -1) {
         alert('邮箱格式不对');
-        $("#name").focus();
+        $("#email").focus();
         return false;
     }
 
     var pw = $("#password").val().trim();
 
-    if (/^\w{6,}$/.test(pw)) {
+    if (!/^\w{6,}$/.test(pw)) {
         alert('密码长度至少要六位');
         $("#password").focus();
         return false;
@@ -75,6 +75,22 @@ dagu.updateData = function() {
         if (data.status) {
             alert("修改成功");
             window.location.href = '/list';
+        } else {
+            alert("修改失败");
+        }
+    });
+};
+
+// 修改密码
+dagu.userUp = function() {
+    var user_id = $('#user_id').val();
+    $.post("/userup/:_id", {
+        "_id": user_id,
+        "name": $('#name').val(),
+        "password": $('#password').val()
+    }, function(data) {
+        if (data.status) {
+            alert("修改成功");
         } else {
             alert("修改失败");
         }

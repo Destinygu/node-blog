@@ -3,16 +3,17 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
+            <% if(list.length !==0 ) { %>
             <table class="table table-bordered table-hover blog-back">
                 <tr>
-                    <td>文章id</td>
+                    <td>发表日期</td>
                     <td>作者</td>
                     <td>标题</td>
                     <td>操作</td>
                 </tr>
                 <% list.forEach(function(list){ %>
                 <tr>
-                    <td><%=list._id%></td>
+                    <td><%=list.time%></td>
                     <td><%=list.author.name%></td>
                     <td><a href="/view/<%=list._id%>"><%=list.title%></a></td>
                     <td>
@@ -22,6 +23,9 @@
                 </tr>
                 <% }); %>
             </table>
+            <% }else{ %>
+            <h4>你还没发表过文章</h4>
+            <% } %>
         </div>
     </div>
 </div>
