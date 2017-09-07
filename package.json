@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node-dev ./bin/www"
+    "start": "node-dev socket/index"
   },
   "dependencies": {
     "body-parser": "~1.17.1",

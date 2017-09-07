@@ -9,9 +9,6 @@ var session = require('express-session');
 var mongoose = require('mongoose');
 var MongoStore = require('connect-mongo')(session);
 
-//加载路由文件
-var routes = require('./routes/routes');
-
 //载入数据库文件
 var db = require('./model/db');
 var app = express();
@@ -32,7 +29,6 @@ app.use(cookieParser());
 // app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(express.static(path.join(__dirname, 'public')));
 
-
 //加载中间件,存储session
 app.use(session({
   resave: false,
@@ -48,24 +44,16 @@ app.use(session({
   })
 }));
 
+//router
+var routes = require('./routes/routes');
 routes(app);
 
-/*// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
+// http server
+var http = require('http');
+var server = http.createServer(app);
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+module.exports = server;
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});*/
 
-module.exports = app;
+
+

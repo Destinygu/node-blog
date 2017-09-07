@@ -38,9 +38,9 @@
 //    与服务器进行连接
     var socket = io.connect();
     $(".chatBtn").on('click',function () {
-//        接收服务端发送的hello事件 
         socket.emit('thanks','谢谢')   
     });
+//    接收服务端发送的hello事件 
     socket.on('hello',function(data){
         alert(data);   
     });
