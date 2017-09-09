@@ -1,14 +1,25 @@
 var server = require('../app');
-
-//socket部分
 var io = require('socket.io').listen(server);
+var userList = [];
+
 io.on('connection',function (socket) {
-    // 向客户端发送信息
-    socket.emit('hello','欢迎你');
-    socket.on('thanks',function(data){
-      console.log(data);
-    })
-    socket.broadcast.emit('a','有新人进来了');
+
+    // 接受用户名并广播
+    socket.on('userIn',function(userName){
+      socket.userName = userName;
+      userList.push(userName);
+      io.emit('tellUserIn',userName,userList);
+    });
+
+    socket.on('send',function(chatContent){
+      io.emit('receive',chatContent,socket.userName);
+    }); 
+
+    socket.on('disconnect', function() {
+      io.emit('userOut',socket.userName);
+    });
 });
 
-server.listen(3000);
+server.listen(3000 ,() =>{
+  console.log(`server:${server.address().address}${server.address().port}`);
+});

@@ -51,7 +51,7 @@ module.exports = function (app) {
     app.post('/list/:_id/editor', blogPlugin.updateBlog.post);
 
     //聊天室
-    app.get('/wechat',function(req,res,next){
+    app.get('/wechat', log, function(req,res,next){
         res.render('wechat',{title:'wechat'});
     });
 

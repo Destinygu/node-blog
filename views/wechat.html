@@ -1,55 +1,65 @@
 <% include common/header.html %>
 <style>
-    .wrap{
-        width:800px;
-        height:500px;
-        margin: 0 auto;
-    }
-    .chat_content{
-        height:400px;
-        background: #fff;
-    }
-    .look{
-        height:30px;
-        background: #f0ad4e;
-    }
-    .chat_bot{
-        height: 70px;
-        background: #fff;
-    }
+  .chat-content{
+    height: 400px;
+    padding: 20px;
+    background: #202020;
+    overflow: auto;
+    color: #fff;
+  }
+  .chatItem{
+    height: 75px;
+  }
+  .chatBtn{
+    margin-top: 10px;
+  }
 </style>
-<div class="wrap">
-    <div class="chat_content">
 
-    </div>
-    <div class="look">
-
-    </div>
-    <div class="chat_bot">
-        <input class="chatBtn" type="button" value="按钮">
-    </div>
-</div>
-
-
-
+<form class="container">
+  <div>
+    <span class="onlineCount"></span>
+    <span class="onlineUser"></span>
+  </div>
+  <div class="chat-content"></div>
+  <div class="chat-item">
+    <textarea class="form-control chatItem" name="chatItem"></textarea>
+    <button type="button" class="btn btn-success pull-right chatBtn">发送</button>
+  </div>
+</form>
 <script src="/js/socket.io.js"></script>
 
 <script>
-//    与服务器进行连接
-    var socket = io.connect();
-    $(".chatBtn").on('click',function () {
-        socket.emit('thanks','谢谢')   
-    });
-//    接收服务端发送的hello事件 
-    socket.on('hello',function(data){
-        alert(data);   
-    });
-    // 接受广播事件
-    socket.on('a',function(data){
-        alert(data);
-    });
+  console.log($('.user-name').text());
+  var socket = io.connect();
+  var userName = $('.user-name').text();
+  // 发送用户名
+  socket.emit('userIn',userName);
 
+  $(".chatBtn").on('click',function () {
+    if($.trim($(".chatItem").val()) != ""){
+      socket.emit('send', $(".chatItem").val(), userName);   
+      $(".chatItem").val("") ;
+    }else{
+      alert("请输入内容");
+    }
+  });
 
+  socket.on('tellUserIn',function(userName,userList){
+    $(".chat-content").append("<p>"+userName+"上线了....</p>");
+    var currentUsers = Array.from(new Set(userList));
+    var UsersLength = currentUsers.length;
+    $(".onlineCount").text( `聊天室在线人数: ${UsersLength}   `);
+    $(".onlineUser").text( `在线用户: ${currentUsers}`);
+  });
+  
+  socket.on('receive',function(chatContent,userName){
+    $(".chat-content").append("<p>"+ userName +" : "+ chatContent +"</p>");
+  });
+
+  socket.on('userOut',function(userName){
+    $(".chat-content").append("<p>"+userName+"离开了聊天室</p>");
+  })
+ 
 </script>
 
 <% include common/footer.html %>
