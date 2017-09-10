@@ -46,19 +46,22 @@
 
   socket.on('tellUserIn',function(userName,userList){
     $(".chat-content").append("<p>"+userName+"上线了....</p>");
-    var currentUsers = Array.from(new Set(userList));
-    var UsersLength = currentUsers.length;
-    $(".onlineCount").text( `聊天室在线人数: ${UsersLength}   `);
-    $(".onlineUser").text( `在线用户: ${currentUsers}`);
+    onlineRender(userName,userList);
   });
   
   socket.on('receive',function(chatContent,userName){
     $(".chat-content").append("<p>"+ userName +" : "+ chatContent +"</p>");
   });
 
-  socket.on('userOut',function(userName){
+  socket.on('userOut',function(userName,userList){
     $(".chat-content").append("<p>"+userName+"离开了聊天室</p>");
-  })
+    onlineRender(userName,userList);
+  });
+
+  function onlineRender(userName,userList){
+    $(".onlineCount").text( `聊天室在线人数: ${userList.length}   `);
+    $(".onlineUser").text( `在线用户: ${userList}`);
+  }
  
 </script>
 
